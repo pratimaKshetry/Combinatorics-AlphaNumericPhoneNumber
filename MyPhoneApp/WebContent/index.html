@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Pratima Phone app</title>
+
+<script language="javascript">	
+
+
+function validatePhone(txtPhone) {
+    
+    //N ranges 2-9, x ranges 0-9
+    //10 digit NPA NXX xxxx
+    //7 digit NXX xxxx
+    var a = txtPhone;
+    var reg1=/^[2-9]\d{2}-[2-9]\d{2}-\d{4}$/;
+    var reg2=/^[(][2-9]\d{2}[)][2-9]\d{2}-\d{4}$/
+    var reg3=/^[2-9]\d{2}[2-9]\d{6}$/;
+    var reg4=/^[2-9]\d{6}$/;
+    var reg5=/^[2-9]\d{2}-\d{4}$/
+    var reg6=/^[(][2-9]\d{2}[)][2-9]\d{6}$/
+    var valid=false;
+
+    if (reg1.test(a)) {
+       valid=true;
+    }
+
+    if (reg2.test(a)) {
+       valid=true;
+    }
+
+    if (reg3.test(a)) {
+       valid=true;
+    }
+
+    if (reg4.test(a)) {
+       valid=true;
+    }
+
+    if (reg5.test(a)) {
+       valid=true;
+    }
+
+    if (reg6.test(a)) {
+       valid=true;
+    }
+
+    if(valid)
+    {
+
+      var nPhone =txtPhone.replace(/\D/g,'');
+      //alert("Valid Phone " +nPhone);    
+      document.formIn.num.value = nPhone;
+      return true;
+
+    }
+    else
+    {
+       alert("Please Enter valid Phone");  
+       return false ;
+    }
+   
+}
+
+</script>
+</head>
+<body>
+ <br>
+ <br>
+
+<form name="formIn" id ="formIn" action="application_phone" method="get" onsubmit="return validatePhone(document.formIn.num.value)">
+  Please Enter Phone Number:
+  <br>
+  <input type="text" name="num">  
+  <input type="submit" value="Submit">   
+</form>
+
+</body>
+</html>
